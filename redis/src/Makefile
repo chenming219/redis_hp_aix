@@ -91,7 +91,7 @@ REDIS_CHECK_DUMP_OBJ=redis-check-dump.o lzf_c.o lzf_d.o crc64.o
 REDIS_CHECK_AOF_NAME=redis-check-aof
 REDIS_CHECK_AOF_OBJ=redis-check-aof.o
 
-all: $(REDIS_SERVER_NAME) mv
+all: $(REDIS_SERVER_NAME) 
 	@echo ""
 	@echo "Hint: It's a good idea to run 'make test' ;)"
 	@echo ""
@@ -126,9 +126,6 @@ persist-settings: distclean
 # redis-server
 $(REDIS_SERVER_NAME): $(REDIS_SERVER_OBJ)
 	${CC} ${BFLAG} -o $@ $(REDIS_SERVER_OBJ) ../deps/hiredis/libhiredis.a ../deps/lua/src/liblua.a $(FINAL_LIBS)
-
-mv:
-	cp redis-server /home/ehmuser/Mpos/bin/mpos_redis
 
 # Because the jemalloc.h header is generated as a part of the jemalloc build,
 # building it should complete before building any other object. Instead of
