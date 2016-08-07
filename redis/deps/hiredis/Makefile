@@ -32,7 +32,7 @@ DYLIB_MAKE_CMD=$(CC) -shared -Wl,-soname,$(DYLIB_MINOR_NAME) -o $(DYLIBNAME) $(L
 STLIBNAME=$(LIBNAME).$(STLIBSUFFIX)
 STLIB_MAKE_CMD=ar rcs $(STLIBNAME)
 
-all: $(DYLIBNAME) $(STLIBNAME) mv clean
+all: $(DYLIBNAME) $(STLIBNAME) clean
 
 # Deps (use make dep to generate this)
 net.o: net.c fmacros.h net.h hiredis.h
@@ -77,9 +77,6 @@ static: $(STLIBNAME)
 
 .c.o:
 	$(CC) ${CFLAG} $<
-
-mv:
-	cp libhiredis.a /home/ehmuser/Mpos/lib_c
 
 
 clean:
